@@ -4,6 +4,6 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 alias ls='ls -GFh'
-alias ds='du -sch'
+alias ds='du -sch *'
 alias cp='cp -i'
 alias rm='rm -i'
