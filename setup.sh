@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo "START"
 curl https://raw.githubusercontent.com/AkshayRaman/dotfiles/master/.gitconfig > ~/.gitconfig
 curl https://raw.githubusercontent.com/AkshayRaman/dotfiles/master/.vimrc > ~/.vimrc
