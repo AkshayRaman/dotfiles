@@ -3,12 +3,15 @@ export PS1="\[\033[33;1m\]\w\[\033[m\]\$ "
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
 alias ls='ls -GFh'
 alias l='ls -alhrt'
 alias ds='du -sch *'
 alias cp='cp -i'
 alias rm='rm -i'
-
 
 #SSH autocomplete
 _complete_ssh_hosts ()
@@ -29,5 +32,4 @@ _complete_ssh_hosts ()
         return 0
 }
 complete -F _complete_ssh_hosts ssh
-
 
