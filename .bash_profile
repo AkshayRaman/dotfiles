@@ -13,6 +13,9 @@ alias ds='du -sch *'
 alias cp='cp -i'
 alias rm='rm -i'
 
+alias ds='du -sch *'
+alias pylint='pylint -E'
+
 #SSH autocomplete
 _complete_ssh_hosts ()
 {
