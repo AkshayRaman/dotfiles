@@ -123,11 +123,20 @@ export LANGUAGE=en_US.UTF-8
 alias ds='du -sch *'
 alias pylint='pylint -E'
 
-convert2pdf(){
+py2pdf(){
     if [ "$#" -ne 2 ]; then
         echo "Invalid parameter count!";
         return;
     fi;
     echo "Converting $1 to $2"; 
     enscript --color=1 -Epython -q -Z -p - -f Courier10 $1 | ps2pdf - $2;
+}
+
+txt2pdf(){
+    if [ "$#" -ne 2 ]; then
+        echo "Invalid parameter count!";
+        return;
+    fi;
+    echo "Converting $1 to $2"; 
+    enscript -q -Z -p - -f Courier14 --word-wrap $1 | ps2pdf - $2;
 }
