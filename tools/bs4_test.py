@@ -76,8 +76,8 @@ def visit_page(url, search_term):
         print("Error in visiting %s" % url)
 
 if __name__ == "__main__":
-    _cache = load_cache()
     if len(sys.argv) >= 2:
+        _cache = load_cache()
         search_term = sys.argv[1]
         results = google(search_term, _cache)
 
