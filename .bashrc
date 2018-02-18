@@ -140,3 +140,9 @@ txt2pdf(){
     echo "Converting $1 to $2"; 
     enscript -q -Z -p - -f Courier14 --word-wrap $1 | ps2pdf - $2;
 }
+
+genrandfiles(){
+    for n in {1..10}; do
+    	dd if=/dev/urandom of=file$( printf %04d "$n" ).bin bs=1 count=$(( RANDOM + 102400 ))
+	done
+}
