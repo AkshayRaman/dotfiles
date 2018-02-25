@@ -146,3 +146,7 @@ genrandfiles(){
     	dd if=/dev/urandom of=file$( printf %04d "$n" ).bin bs=1 count=$(( RANDOM + 102400 ))
 	done
 }
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
