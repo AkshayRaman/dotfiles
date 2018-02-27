@@ -122,6 +122,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 alias ds='du -sch *'
 alias pylint='pylint -E'
+alias allwaf='./waf distclean && ./waf configure && ./waf'
 
 py2pdf(){
     if [ "$#" -ne 2 ]; then
