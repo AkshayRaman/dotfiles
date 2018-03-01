@@ -120,6 +120,8 @@ fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+export GZIP=-9
+
 alias ds='du -sch *'
 alias pylint='pylint -E'
 alias allwaf='./waf distclean && ./waf configure && ./waf'
