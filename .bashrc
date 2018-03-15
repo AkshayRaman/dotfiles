@@ -146,8 +146,8 @@ txt2pdf(){
 
 #217
 genrandfiles(){
-    for n in {1..10}; do
-    	dd if=/dev/urandom of=file$( printf %04d "$n" ).bin bs=1 count=$(( RANDOM + 102400 ))
+    for n in {0..4}; do
+    	dd if=/dev/urandom of=file$( printf %04d "$n" ).bin bs=1 count=$(( RANDOM + 10240 ))
 	done
 }
 
@@ -161,6 +161,13 @@ random_data_file_shuffle(){
     for i in {0..3}; do 
         awk -v var=$i -F, '$2==var{print $0}' $1 | shuf -n $2 >> shuffled.txt;
     done
+}
+get_label_count(){
+    if [ "$#" -ne 1 ]; then
+        echo "Need filename";
+        return
+    fi
+    awk -F ',' '{print $2}' $1 | sort | uniq -c;
 }
 
 
