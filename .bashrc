@@ -144,33 +144,6 @@ txt2pdf(){
     enscript -q -Z -p - -f Courier14 --word-wrap $1 | ps2pdf - $2;
 }
 
-#217
-genrandfiles(){
-    for n in {0..4}; do
-    	dd if=/dev/urandom of=file$( printf %04d "$n" ).bin bs=1 count=$(( RANDOM + 10240 ))
-	done
-}
-
-#205
-random_data_file_shuffle(){
-    if [ "$#" -ne 2 ]; then
-        echo "Need: filename count";
-        return;
-    fi
-    rm -f shuffled.txt;
-    for i in {0..3}; do 
-        awk -v var=$i -F, '$2==var{print $0}' $1 | shuf -n $2 >> shuffled.txt;
-    done
-}
-get_label_count(){
-    if [ "$#" -ne 1 ]; then
-        echo "Need filename";
-        return
-    fi
-    awk -F ',' '{print $2}' $1 | sort | uniq -c;
-}
-
-
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
