@@ -125,6 +125,8 @@ export GZIP=-9
 alias ds='du -sch *'
 alias pylint='pylint -E'
 alias allwaf='./waf distclean && ./waf configure && ./waf'
+alias bigres='xrandr -s 1920x1080'
+alias smallres='xrandr -s 1360x768'
 
 py2pdf(){
     if [ "$#" -ne 2 ]; then
