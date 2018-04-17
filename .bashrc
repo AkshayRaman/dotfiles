@@ -155,7 +155,7 @@ deepcompare()
         return;
     fi;
     for i in `find $1 | sort`; 
-        do stat --printf='%a|%F|%G|%U|%s|%n|' $i; 
+        do stat --printf='%#03a|%F|%G|%U|%s|%n|' $i; 
             if [ -f "$i" ]; 
                 then 
                     md5sum $i | awk '{print $1}'; 
