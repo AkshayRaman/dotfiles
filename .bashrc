@@ -157,9 +157,14 @@ deepcompare()
     fi;
     
     curr_dir=$(pwd);
-    cd $1;
+    thing_to_find="$1";
+    if [ -d "$1" ];
+        then
+            cd $1;
+            thing_to_find="";
+    fi;
     
-    for i in `find | sort`; 
+    for i in `find $thing_to_find | sort`; 
         do stat --printf='%n|%#03a|%F|%G|%U|%s|' $i; 
             if [ -f "$i" ]; 
                 then 
