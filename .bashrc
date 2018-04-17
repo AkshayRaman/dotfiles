@@ -92,6 +92,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias ungrep='grep -v'
+alias R='R --no-save'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
