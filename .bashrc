@@ -128,6 +128,7 @@ alias pylint='pylint -E'
 alias allwaf='./waf distclean && ./waf configure && ./waf'
 alias bigres='xrandr -s 1920x1080'
 alias smallres='xrandr -s 1360x768'
+alias updatebash='source ~/.bashrc'
 
 py2pdf(){
     if [ "$#" -ne 2 ]; then
@@ -149,10 +150,17 @@ txt2pdf(){
 
 deepcompare()
 {
-    for i in `find | sort`; 
-        do stat -c '%a|%F|%G|%U|%s|%n' $i; 
-            if [ -f "$i" ]; then 
-                md5sum $i | awk '{print $1}'; else echo "NOMD5FORDIR"; 
+    if [ "$#" -ne 1 ]; then
+        echo "Invalid parameter count!";
+        return;
+    fi;
+    for i in `find $1 | sort`; 
+        do stat --printf='%a|%F|%G|%U|%s|%n|' $i; 
+            if [ -f "$i" ]; 
+                then 
+                    md5sum $i | awk '{print $1}'; 
+                else
+                    echo "NO_MD5_FOR_DIRECTORIES"; 
             fi; 
         done
 }
