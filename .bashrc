@@ -149,7 +149,12 @@ txt2pdf(){
 
 deepcompare()
 {
-    for i in `find | sort`; do stat -c '%a|%F|%G|%U|%s|%n' $i; if [ -f "$i" ]; then md5sum $i | awk '{print $1}'; else echo "NOMD5FORDIR"; fi; done
+    for i in `find | sort`; 
+        do stat -c '%a|%F|%G|%U|%s|%n' $i; 
+            if [ -f "$i" ]; then 
+                md5sum $i | awk '{print $1}'; else echo "NOMD5FORDIR"; 
+            fi; 
+        done
 }
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
