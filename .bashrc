@@ -160,12 +160,12 @@ deepcompare()
     cd $1;
     
     for i in `find | sort`; 
-        do stat --printf='%#03a|%F|%G|%U|%s|%n|' $i; 
+        do stat --printf='%n|%#03a|%F|%G|%U|%s|' $i; 
             if [ -f "$i" ]; 
                 then 
                     md5sum $i | awk '{print $1}'; 
                 else
-                    echo "NONE"; 
+                    echo ""; 
             fi; 
         done
     
