@@ -155,15 +155,21 @@ deepcompare()
         echo "Invalid parameter count!";
         return;
     fi;
-    for i in `find $1 | sort`; 
+    
+    curr_dir=$(pwd);
+    cd $1;
+    
+    for i in `find | sort`; 
         do stat --printf='%#03a|%F|%G|%U|%s|%n|' $i; 
             if [ -f "$i" ]; 
                 then 
                     md5sum $i | awk '{print $1}'; 
                 else
-                    echo "NO_MD5_FOR_DIRECTORIES"; 
+                    echo "NONE"; 
             fi; 
         done
+    
+    cd $curr_dir;
 }
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
