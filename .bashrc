@@ -91,6 +91,7 @@ alias l='ls -alhrt'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias ungrep='grep -v'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -144,6 +145,11 @@ txt2pdf(){
     fi;
     echo "Converting $1 to $2"; 
     enscript -q -Z -p - -f Courier14 --word-wrap $1 | ps2pdf - $2;
+}
+
+deepcompare()
+{
+    for i in `find | sort`; do stat -c '%a|%F|%G|%U|%s|%n' $i; if [ -f "$i" ]; then md5sum $i | awk '{print $1}'; else echo "NOMD5FORDIR"; fi; done
 }
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
