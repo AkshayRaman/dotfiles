@@ -164,11 +164,12 @@ deepcompare()
             thing_to_find="";
     fi;
     
-    for i in `find $thing_to_find | sort`; 
-        do stat --printf='%n|%#03a|%F|%G|%U|%s|' $i; 
+    find $thing_to_find -print0 |
+    while IFS= read -r -d $'\0' i; 
+        do stat --printf='%n|%#03a|%F|%G|%U|%s|' "$i"; 
             if [ -f "$i" ]; 
                 then 
-                    md5sum $i | awk '{print $1}'; 
+                    md5sum "$i" | awk '{print $1}'; 
                 else
                     echo ""; 
             fi; 
