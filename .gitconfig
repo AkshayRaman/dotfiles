@@ -1,3 +1,7 @@
 [user]
 	name = Akshay
-	email = 2210019+AkshayRaman@users.noreply.github.com
+	email = 2210019+ar@users.noreply.github.com
+[credential]
+	helper = cache --timeout=3600
+[core]
+	editor = vim
