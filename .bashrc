@@ -123,6 +123,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export GZIP=-9
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 alias ds='du -sch *'
 alias pylint='pylint -E'
@@ -130,6 +132,8 @@ alias allwaf='./waf distclean && ./waf configure && ./waf'
 alias bigres='xrandr -s 1920x1080'
 alias smallres='xrandr -s 1360x768'
 alias updatebash='source ~/.bashrc'
+alias tar='tar --owner=9999 --group=9999'
+alias restart-dns='sudo service systemd-resolved restart'
 
 py2pdf(){
     if [ "$#" -ne 2 ]; then
@@ -178,6 +182,4 @@ deepcompare()
     cd $curr_dir;
 }
 
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
