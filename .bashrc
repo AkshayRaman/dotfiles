@@ -93,6 +93,8 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias ungrep='grep -v'
 alias R='R --no-save'
+alias emacs='vim'
+alias nano='vim'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -122,18 +124,27 @@ fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export GZIP=-9
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
-alias ds='du -sch *'
 alias pylint='pylint -E'
-alias allwaf='./waf distclean && ./waf configure && ./waf'
 alias bigres='xrandr -s 1920x1080'
 alias smallres='xrandr -s 1360x768'
 alias updatebash='source ~/.bashrc'
 alias tar='tar --owner=9999 --group=9999'
 alias restart-dns='sudo service systemd-resolved restart'
+alias rot_normal='xrandr --output eDP-1 --rotate normal'
+alias rot_down='xrandr --output eDP-1 --rotate inverted'
+alias rot_left='xrandr --output eDP-1 --rotate left'
+alias rot_right='xrandr --output eDP-1 --rotate right'
+
+ds(){
+    if [ "$#" -eq 0 ]; then
+        du -sch * 2> /dev/null;
+        return;
+    fi;
+    du -sch $@ 2> /dev/null;
+}
 
 py2pdf(){
     if [ "$#" -ne 2 ]; then
@@ -182,4 +193,38 @@ deepcompare()
     cd $curr_dir;
 }
 
+iptables_clear()
+{
+    iptables -P INPUT ACCEPT
+    iptables -P FORWARD ACCEPT
+    iptables -P OUTPUT ACCEPT
+    iptables -t nat -F
+    iptables -t mangle -F
+    iptables -F
+    iptables -X
+}
 
+kill-docker-containers()
+{
+    if [ `docker container ls -a | wc -l` -gt 1 ]; then
+        docker container rm -f $(docker container ls -a | awk 'NR>1{print $1}' );
+    else
+        echo "Nothing is running. Nothing to kill."
+    fi
+}
+pepcat()
+{
+    autopep8 -i $1 && cat $1
+}
+
+alias python='/usr/bin/python3.9'
+alias pylint='/usr/bin/pylint3'
+alias pip='/usr/local/bin/pip3.6'
+alias please='sudo $(fc -ln -1)'
+alias dnsflush='sudo /etc/init.d/networking restart'
+alias df='df -hx"squashfs"'
+#alias parallel='parallel --citation'
+
+alias random_android_id='openssl rand -hex 8'
+alias mitmweb='mitmweb -q'
+export PYTHONSTARTUP=$HOME/.pythonstartup
